@@ -1,0 +1,32 @@
+{
+  "name": "dojo-jest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --coverage"
+  },
+  "author": "juansantag95@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@nebulae/backend-node-tools": "^0.2.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.4",
+    "dateformat": "^3.0.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "http": "0.0.1-security",
+    "jwt-simple": "^0.5.6",
+    "moment": "^2.24.0",
+    "mongodb": "^3.2.7",
+    "mqtt": "^4.0.0",
+    "mysql": "^2.18.1",
+    "nedb": "^1.8.0",
+    "rxjs": "^6.3.3",
+    "uuid": "^3.2.1",
+    "ws": "^7.3.0"
+  },
+  "devDependencies": {
+    "jest": "^27.2.0"
+  }
+}
