@@ -5,16 +5,15 @@ const express = require("express");
 const { Observable, concat } = require('rxjs')
 const app = express();
 const bodyParser = require('body-parser');
-const port = parseInt(process.env.REST_END_POINT_PORT || '2015');
+const port = parseInt(process.env.REST_END_POINT_PORT || '7070');
 const endPoint = process.env.REST_HTTP_END_POINT || 'localhost';
 
-// const { AuthorizationRoutes, BookRoutes } = require('./routes');
-// const routesInDomain = [AuthorizationRoutes, BookRoutes];
-// const routesInDomain = [];
-const { tap, delay, toArray } = require('rxjs/operators');
+const { GameRoutes } = require('./routes');
+const routesInDomain = [GameRoutes];
 
-//  DATA BASE
-// const MongoDB = require("./services/MongoDB");
+const { toArray } = require('rxjs/operators');
+
+
 
 app.use((req, res, next) => {
     // Website you wish to allow to connect
@@ -40,24 +39,21 @@ app.use(bodyParser.json());
 function startExpress$() {
     return Observable.create(observer => {
         observer.next("Starting express aplication");
-        // routesInDomain.forEach(route => route.applyRoutes(app));
+        routesInDomain.forEach(route => route.applyRoutes(app));
 
         app.get('', (req, res) => {
             res.send({ msg: "HOME ROUTE ENABLED" });
         });
 
-        const server = app.listen(port, () => {
+        app.listen(port, () => {
             console.log(`REST server is running at ${endPoint}:${port}`);
         });
-
-        // setupWebSocket(server);
 
         observer.complete();
     });
 }
 
 concat(
-    // MongoDB.start$,
     startExpress$(),
 ).pipe(toArray())
     .subscribe(() => {

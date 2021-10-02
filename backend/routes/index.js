@@ -1,9 +1,6 @@
 "use strict";
 
-const AuthorizationRoutes = require("./Authorization");
-const BookRoutes = require("./Books");
-
+const GameRoutes = require("./game");
 module.exports = {
-  AuthorizationRoutes,
-  BookRoutes
+  GameRoutes
 };
